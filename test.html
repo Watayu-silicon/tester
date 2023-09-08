@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function start(){
+            localStorage.setItem('total',0)
+        }
+        
+        function C_plus(c){
+            current = document.getElementById('counter').value
+            out = document.getElementById('counter')
+            if(current == '0'){
+                out.value = Number(current)+c
+            }else{
+                out.value = current+c
+            }
+        }
+        
+        function del(){
+            out = document.getElementById('counter')
+            out.value = 0
+        }
+
+        function account(){
+          count = Number(document.getElementById('counter').value)
+          p_out = document.getElementById('t_price')
+          c_out = document.getElementById('order_content')
+          p_out.innerText = String(200*count)+'円'
+          c_out.innerText = String(count)+'個'
+        }
+    </script>
+    <style>
+        label {
+            margin-right: 5px;
+        }
+        label input {
+            display: none;
+        }
+        label span {
+            color: #333; 
+            font-size: 14px;
+            border: 1px solid #333; 
+            border-radius: 20px; 
+            padding: 5px 20px; 
+        }
+        label input:checked + span {
+            color: #FFF;
+            background: rgb(0, 140, 255);
+            border: 1px solid rgb(0, 140, 255);
+        }
+        .open {
+        	cursor:pointer;
+        }
+        #pop-up {
+        	display: none;
+        }
+        .overlay {
+        	display: none;
+        }
+        #pop-up:checked + .overlay {
+        	display: block;
+        	position: fixed;
+        	width: 100%;
+        	height: 100vh;
+        	top: 0;
+        	left: 0;
+        	z-index: 9999;
+        	background: rgba(0, 0, 0, 0.6);
+        }
+        .window {
+        	position: fixed;
+        	top: 50%;
+        	left: 50%;
+        	width: 90vw;
+        	max-width: 360px;
+            padding: 20px;
+        	height: 300px;
+        	background-color: #fff;
+        	border-radius: 4px;
+        	align-items: center;
+        	transform: translate(-50%, -50%);
+        }
+        .close {
+        	position: absolute;
+        	top: 4px;
+        	right: 4px;
+        	cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test</h1>
+    <input type="button" value="初期化" onclick="start()"><br>
+    <input type="number" value="0" id="counter" disabled>
+    <input type="button" value="clear" onclick="del()">
+    <div class="big">
+        <input type="button" value="1" onclick="C_plus(1)"><input type="button" value="2" onclick="C_plus(2)"><input type="button" value="3" onclick="C_plus(3)"><br>
+        <input type="button" value="4" onclick="C_plus(4)"><input type="button" value="5" onclick="C_plus(5)"><input type="button" value="4" onclick="C_plus(4)"><br>
+        <input type="button" value="7" onclick="C_plus(7)"><input type="button" value="8" onclick="C_plus(8)"><input type="button" value="9" onclick="C_plus(9)"><br>
+    </div>
+    <!--<input type="button" value="submit" onclick="submit()"> -->
+    <label class="open" for="pop-up" onclick="account()">会計</label>
+    <input type="checkbox" id="pop-up">
+    <div class="overlay">
+    	<div class="window">
+    		<label class="close" for="pop-up">キャンセル</label>
+    		<h2>販売内容</h2>
+    		<h3 id="order_content"></h3> <h2 id="t_price"></h2>
+        <input type="button" valu>
+    	</div>
+  </div>
+</body>
+</html>
