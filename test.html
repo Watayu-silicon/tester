@@ -52,7 +52,8 @@
 
         function test(){
             total = localStorage.getItem('total')
-            console.log(total)
+            out = document.getElementById("tester_out")
+            out.innerText = '現在の合計売上'+String(total)+'円'
         }
     </script>
     <style>
@@ -137,5 +138,6 @@
     </div>
     <br><br>
     <input type="button" value="動作テスト" onclick="test()">
+    <h2 id="tester_out"></h2>
 </body>
 </html>
